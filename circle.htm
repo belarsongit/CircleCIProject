@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Take Home Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    #text-display {
+      font-size: 24px;
+      margin: 20px;
+      color: #333;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <p>Updated 6:34</p>
+  <div id="text-display1"></div>
+  <button id="button1" onclick="changeText1()">Click Me 1</button>
+<p>
+  <div id="text-display2"></div>
+  <button id="button2" onclick="changeText2()">Click Me 2</button>
+
+  <script>
+    const messages = [
+      "Clicked once",
+      "Clicked twice"
+    ];
+
+    let index1 = 0;
+
+    function changeText1() {
+      index1 = (index1 + 1) % messages.length;
+      document.getElementById("text-display1").innerText = messages[index1];
+    }
+
+        let index2 = 0;
+
+    function changeText2() {
+      index2 = (index2 + 1) % messages.length;
+      document.getElementById("text-display2").innerText = messages[index2];
+    }
+
+  </script>
+
+</body>
+</html>
