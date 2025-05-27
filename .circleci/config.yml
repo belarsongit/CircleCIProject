@@ -1,10 +1,24 @@
-version: '2.1'
-orbs:
-  cypress: cypress-io/cypress@4
+version: 2.1
+
+jobs:
+  hello-job:
+    docker:
+      - image: cimg/node:17.2.0
+    steps:
+      - checkout
+      - run:
+          name: List directory contents
+          command: ls -al
+      - run:
+          name: Check for package.json
+          command: |
+            if [ ! -f package.json ]; then
+              echo "Unable to find your package.json file. Did you forget to set the app-dir parameter?"
+              exit 1
+            fi
+      - run: echo "hello world"
+
 workflows:
-  use-my-orb:
+  my-workflow:
     jobs:
-      - cypress/run:
-          cypress-command: npx cypress run --browser chrome
-          install-browsers: true
-          start-command: npm run start:dev
+      - hello-job
