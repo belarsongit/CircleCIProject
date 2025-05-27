@@ -1,14 +1,10 @@
-version: 2.1 
-
-jobs:
-  hello-job:
-    docker:
-      - image: cimg/node:17.2.0 # the primary container, where your job's commands are run
-    steps:
-      - checkout # check out the code in the project directory
-      - run: echo "hello world" # run the `echo` command
-
+version: '2.1'
+orbs:
+  cypress: cypress-io/cypress@4
 workflows:
-  my-workflow:
+  use-my-orb:
     jobs:
-      - hello-job
+      - cypress/run:
+          cypress-command: npx cypress run --browser chrome
+          install-browsers: true
+          start-command: npm run start:dev
